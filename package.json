@@ -1,0 +1,16 @@
+{
+  "name": "ArrayOf",
+  "version": "1.0.0",
+  "main": "js/src/ArrayOf",
+  "dependencies": {
+    "Validator": "aleclarson/Validator#1.0.0",
+    "isType": "aleclarson/isType#1.0.0",
+    "formatType": "aleclarson/formatType#1.0.0",
+    "wrongType": "aleclarson/wrongType#1.0.0"
+  },
+  "lotus": {
+    "plugins": [
+      "lotus-coffee"
+    ]
+  }
+}
