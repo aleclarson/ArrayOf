@@ -38,7 +38,7 @@ module.exports = Validator.Type("ArrayOf", {
       error = wrongType(Array, key);
       meta = {
         key: key,
-        value: array,
+        array: array,
         type: Array
       };
       return {
@@ -52,10 +52,11 @@ module.exports = Validator.Type("ArrayOf", {
       if (isType(value, type)) {
         continue;
       }
-      key += "[" + index + "]";
       error = wrongType(type, key);
       meta = {
         key: key,
+        array: array,
+        index: index,
         value: value,
         type: type
       };

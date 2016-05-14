@@ -22,14 +22,13 @@ module.exports = Validator.Type "ArrayOf",
 
     unless Array.isArray array
       error = wrongType Array, key
-      meta = { key, value: array, type: Array }
+      meta = { key, array, type: Array }
       return { error, meta }
 
     { type } = this
     for value, index in array
       continue if isType value, type
-      key += "[" + index + "]"
       error = wrongType type, key
-      meta = { key, value, type }
+      meta = { key, array, index, value, type }
       return { error, meta }
     return
