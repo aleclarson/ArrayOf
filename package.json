@@ -8,6 +8,9 @@
     "isType": "aleclarson/isType#1.0.0",
     "wrongType": "aleclarson/wrongType#1.0.0"
   },
+  "devDependencies": {
+    "getType": "aleclarson/getType#1.0.0"
+  },
   "lotus": {
     "plugins": [
       "lotus-coffee"
