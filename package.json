@@ -1,7 +1,7 @@
 {
   "name": "ArrayOf",
   "version": "1.0.0",
-  "main": "js/src/ArrayOf",
+  "main": "js/ArrayOf",
   "dependencies": {
     "Validator": "aleclarson/Validator#1.1.0",
     "formatType": "aleclarson/formatType#1.0.0",
