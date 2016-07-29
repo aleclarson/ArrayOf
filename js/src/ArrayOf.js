@@ -16,54 +16,32 @@ module.exports = Validator.Type("ArrayOf", {
     return "array of " + formatType(this.type);
   },
   test: function(array) {
-    var i, index, len, type, value;
+    var i, index, len, value;
     if (!Array.isArray(array)) {
       return false;
     }
-    type = this.type;
     for (index = i = 0, len = array.length; i < len; index = ++i) {
       value = array[index];
-      if (!isType(value, type)) {
+      if (!isType(value, this.type)) {
         return false;
       }
     }
     return true;
   },
   assert: function(array, key) {
-    var error, i, index, len, meta, type, value;
+    var i, index, len, value;
     if (key == null) {
       key = "array";
     }
     if (!Array.isArray(array)) {
-      error = wrongType(Array, key);
-      meta = {
-        key: key,
-        array: array,
-        type: Array
-      };
-      return {
-        error: error,
-        meta: meta
-      };
+      return wrongType(Array, key);
     }
-    type = this.type;
     for (index = i = 0, len = array.length; i < len; index = ++i) {
       value = array[index];
-      if (isType(value, type)) {
+      if (isType(value, this.type)) {
         continue;
       }
-      error = wrongType(type, key);
-      meta = {
-        key: key,
-        array: array,
-        index: index,
-        value: value,
-        type: type
-      };
-      return {
-        error: error,
-        meta: meta
-      };
+      return wrongType(this.type, key + ("[" + index + "]"));
     }
   }
 });
