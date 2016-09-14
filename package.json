@@ -2,18 +2,22 @@
   "name": "ArrayOf",
   "version": "1.1.0",
   "main": "js/ArrayOf",
+  "plugins": [
+    "lotus-coffee"
+  ],
+  "scripts": {
+    "build": "coffee -cb -o js src",
+    "postinstall": "postinstall-build js 'npm run build'"
+  },
   "dependencies": {
     "Validator": "aleclarson/Validator#1.1.0",
     "formatType": "aleclarson/formatType#1.0.0",
     "isType": "aleclarson/isType#1.0.0",
+    "postinstall-build": "0.2.x",
     "wrongType": "aleclarson/wrongType#1.0.0"
   },
   "devDependencies": {
-    "getType": "aleclarson/getType#1.0.0"
-  },
-  "lotus": {
-    "plugins": [
-      "lotus-coffee"
-    ]
+    "getType": "aleclarson/getType#1.0.0",
+    "coffee-script": "1.9.x"
   }
 }
