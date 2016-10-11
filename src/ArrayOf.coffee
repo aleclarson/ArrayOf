@@ -14,21 +14,16 @@ module.exports = Validator.Type "ArrayOf",
 
   test: (array) ->
     return no if not Array.isArray array
-    { type } = this
-    return no for value, index in array when not isType value, type
+    for value, index in array
+      return no if not isType value, @type
     return yes
 
   assert: (array, key = "array") ->
 
     unless Array.isArray array
-      error = wrongType Array, key
-      meta = { key, array, type: Array }
-      return { error, meta }
+      return wrongType Array, key
 
-    { type } = this
     for value, index in array
-      continue if isType value, type
-      error = wrongType type, key
-      meta = { key, array, index, value, type }
-      return { error, meta }
+      continue if isType value, @type
+      return wrongType @type, key + "[#{index}]"
     return

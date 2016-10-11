@@ -1,5 +1,7 @@
 
-ArrayOf = require "../src/ArrayOf"
+getType = require "getType"
+
+ArrayOf = require ".."
 
 describe "ArrayOf()", ->
 
@@ -10,10 +12,8 @@ describe "ArrayOf()", ->
     expect Foo.type
       .toBe String
 
-    Validator = require "Validator"
-
-    expect Object.getPrototypeOf Foo
-      .toBe Validator.prototype
+    expect getType Foo
+      .toBe ArrayOf
 
   describe ".test()", ->
 
@@ -38,7 +38,7 @@ describe "ArrayOf()", ->
       expect Foo.test [ "1", "2" ]
         .toBe yes
 
-    it "works with arrays of types", ->
+    it "can test against an array of valid types", ->
 
       Foo = ArrayOf [ String, Boolean ]
 
@@ -46,4 +46,26 @@ describe "ArrayOf()", ->
         .toBe yes
 
       expect Foo.test [ "foo", yes, 1 ]
+        .toBe no
+
+    it "can test against any Validator", ->
+
+      Foo = ArrayOf ArrayOf String
+
+      expect Foo.test []
+        .toBe yes
+
+      expect Foo.test [[]]
+        .toBe yes
+
+      expect Foo.test [["string"]]
+        .toBe yes
+
+      expect Foo.test [[1]]
+        .toBe no
+
+      expect Foo.test [1]
+        .toBe no
+
+      expect Foo.test 1
         .toBe no
