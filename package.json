@@ -1,0 +1,11 @@
+{
+  "name": "ArrayOf",
+  "version": "1.1.1",
+  "main": "js/ArrayOf",
+  "dependencies": {
+    "Validator": "aleclarson/Validator#1.1.1",
+    "formatType": "aleclarson/formatType#1.0.0",
+    "isType": "aleclarson/isType#1.0.1",
+    "wrongType": "aleclarson/wrongType#1.0.0"
+  }
+}
