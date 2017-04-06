@@ -4,10 +4,11 @@ Validator = require "Validator"
 wrongType = require "wrongType"
 isType = require "isType"
 
-module.exports = Validator.Type "ArrayOf",
+ArrayOf = Validator.Type "ArrayOf",
 
   init: (type) ->
     @type = type
+    return
 
   name: ->
     "array of " + formatType @type
@@ -27,3 +28,5 @@ module.exports = Validator.Type "ArrayOf",
       continue if isType value, @type
       return wrongType @type, key + "[#{index}]"
     return
+
+module.exports = ArrayOf
